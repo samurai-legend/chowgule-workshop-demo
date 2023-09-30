@@ -6,35 +6,24 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  // MongoDB ObjectId for the unique identifier
-  id       String   @id @default(auto()) @map("_id") @db.ObjectId
-  // User attributes
-  email    String   @unique
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
   password String
   name     String?
-  address  Address?
   posts    Post[]
 }
 
 model Post {
-  id       String @id @default(auto()) @map("_id") @db.ObjectId
-  // Post attributes
-  title    String
-  body     String
-  // Author Relation
-  author   User   @relation(fields: [authorId], references: [id])
-  authorId String @db.ObjectId
-}
-
-// Address is an embedded document
-type Address {
-  street String
-  city   String
-  state  String
-  zip    String
+  id          Int     @id @default(autoincrement())
+  title       String
+  description String
+  content     String?
+  published   Boolean @default(false)
+  author      User    @relation(fields: [authorId], references: [id])
+  authorId    Int
 }

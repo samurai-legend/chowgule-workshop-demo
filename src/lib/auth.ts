@@ -1,5 +1,6 @@
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import AppleProvider from "next-auth/providers/apple";
 import { prisma } from "@app/lib/prisma";
 import { compare } from "bcrypt";
 
@@ -8,6 +9,10 @@ export const authOptions: NextAuthOptions = {
     strategy: "jwt",
   },
   providers: [
+    AppleProvider({
+      clientId: "",
+      clientSecret: "",
+    }),
     CredentialsProvider({
       name: "Sign in",
       credentials: {
