@@ -3,32 +3,16 @@ import { prisma } from "@app/lib/prisma";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
-export function GET() {
-  const data = [
-    {
-      title: "Test",
-      description: "Test Desc.",
-      publishDate: new Date(),
-      imageUrl: "/images/profile.jpg",
-      author: { name: "Suyog Mishal" },
+export async function GET() {
+  const feed = await prisma.post.findMany({
+    include: {
+      author: {
+        select: { name: true, email: true },
+      },
     },
-    {
-      title: "Test 2",
-      description: "Test Desc. 2",
-      publishDate: new Date(),
-      imageUrl: "/images/profile.jpg",
-      author: { name: "Sanket Mishal" },
-    },
-    {
-      title: "Test 3",
-      description: "Test Desc. 3",
-      publishDate: new Date(),
-      imageUrl: "/images/profile.jpg",
-      author: { name: "Sanket Mishal" },
-    },
-  ];
+  });
 
-  return NextResponse.json(data);
+  return NextResponse.json(feed);
 }
 
 export async function POST(request: Request) {

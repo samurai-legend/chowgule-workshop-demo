@@ -21,6 +21,7 @@ export const CreatePost: React.FC = () => {
       console.log(result);
 
       if (result) {
+        router.refresh()
         await router.push("/");
       }
     } catch (error) {

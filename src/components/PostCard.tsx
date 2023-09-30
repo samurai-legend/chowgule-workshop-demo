@@ -5,7 +5,7 @@ import Image from "next/image";
 import ProfileImage from "./ProfileImage";
 
 type PostCardProps = {
-  imageUrl: string;
+  imageUrl?: string;
   title: string;
   description?: string;
   author: Author;
@@ -23,7 +23,7 @@ const PostCard: React.FC<PostCardProps> = ({
     <div className="post-card--wrapper">
       <div className="post-card--image">
         <Image
-          src={imageUrl}
+          src={"/images/profile.jpg"}
           alt="post-card-image"
           fill
           style={{ objectFit: "cover" }}
@@ -34,7 +34,7 @@ const PostCard: React.FC<PostCardProps> = ({
         <p>{description}</p>
       </div>
       <div className="post-card--author">
-        <ProfileImage imageUrl={imageUrl} profileName={author.name} />
+        <ProfileImage imageUrl={"/images/profile.jpg"} profileName={author.name} />
       </div>
     </div>
   );

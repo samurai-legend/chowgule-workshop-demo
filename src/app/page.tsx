@@ -4,10 +4,11 @@ import PostCard from "@app/components/PostCard";
 import SessionSection from "@app/components/SessionSection";
 import { authOptions } from "@app/lib/auth";
 import { getServerSession } from "next-auth";
-import { signIn, signOut } from "next-auth/react";
 
 export default async function RootRoute() {
-  const response = await fetch("http://localhost:3000/api/post");
+  const response = await fetch("http://localhost:3000/api/post", {
+    cache: "no-cache",
+  });
 
   const data = await response.json();
 
