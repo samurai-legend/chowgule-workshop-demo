@@ -22,5 +22,6 @@ main()
   .catch(async (e) => {
     console.error(e);
     await prisma.$disconnect();
+    // exit ts-node compliation
     process.exit(1);
   });
