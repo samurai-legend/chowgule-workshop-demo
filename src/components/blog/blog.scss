@@ -1,0 +1,19 @@
+.blog-post-create {
+  &--wrapper {
+    @apply m-auto max-w-min flex flex-col shadow-xl p-10 rounded-xl;
+    @apply justify-center items-center;
+
+    form {
+      @apply flex flex-col items-center gap-y-10;
+      h1 {
+        @apply text-lg font-bold;
+      }
+      input,
+      textarea {
+        @apply w-full min-w-[200px] px-5 py-1 bg-secondary text-white;
+        @apply rounded-3xl;
+        @apply placeholder:text-white placeholder:font-light;
+      }
+    }
+  }
+}

@@ -1,6 +1,5 @@
 "use client";
-import { signIn, signOut } from "next-auth/react";
-import Button from "./Button";
+import Link from "next/link";
 
 const CreatePostSection: React.FC = () => {
   return (
@@ -8,7 +7,9 @@ const CreatePostSection: React.FC = () => {
       className="w-full py-10 px-5 
   flex flex-row justify-end items-center"
     >
-      <Button>Create Post</Button>
+      <Link className="button" href="/blog/create">
+        Create Post
+      </Link>
     </div>
   );
 };
