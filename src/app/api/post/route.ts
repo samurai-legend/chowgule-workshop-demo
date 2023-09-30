@@ -9,6 +9,11 @@ export async function GET() {
       author: {
         select: { name: true, email: true },
       },
+      likes: {
+        select: {
+          id: true,
+        },
+      },
     },
   });
 

@@ -24,11 +24,11 @@ export default async function RootRoute() {
           {data?.map((post: any, index: number) => (
             <PostCard
               key={index}
+              id={post.id}
               title={post.title}
               description={post.description}
-              publishDate={post.publishDate}
-              imageUrl={post.imageUrl}
               author={post.author}
+              likes={post.likes}
             />
           ))}
         </div>
